@@ -102,7 +102,14 @@ import AppKit
     }
     public func moveQueueItem(from: Int, to: Int) { queue.move(from: from, to: to); persist() }
     public func clearQueue() { loadGeneration = UUID(); queue = PlaybackQueue(); player.replaceCurrentItem(with: nil); currentTrack = nil; isPlaying = false; position = 0; duration = 0; lyrics = nil; MPNowPlayingInfoCenter.default().nowPlayingInfo = nil; persist() }
-    public func refreshLyrics() async { if let id = currentTrack?.id { lyrics = try? await store.lyrics(for: id) } }
+    public func refreshLyrics() async {
+        guard let id = currentTrack?.id else { return }
+        let refreshed = try? await store.track(id)
+        let document = try? await store.lyrics(for: id)
+        guard currentTrack?.id == id else { return }
+        if let refreshed { currentTrack = refreshed }
+        lyrics = document; updateNowPlaying()
+    }
     private func load(autoplay: Bool) async {
         let generation = UUID(); loadGeneration = generation
         player.pause(); isPlaying = false; position = 0; errorMessage = nil; currentTrack = nil; lyrics = nil

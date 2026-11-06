@@ -113,7 +113,14 @@ public actor LibraryStore {
     public func setState<T: Encodable & Sendable>(_ value: T, key: String) throws { try db.execute("INSERT INTO state(key,json) VALUES(?,?) ON CONFLICT(key) DO UPDATE SET json=excluded.json", [key, try encode(value)]) }
     public func state<T: Decodable & Sendable>(_ type: T.Type, key: String) throws -> T? { try db.rows("SELECT json FROM state WHERE key=?", [key]).first.map { try decode(type, $0[0]) } }
     public func ideas() throws -> [Idea] { try db.rows("SELECT json FROM ideas ORDER BY rowid DESC").map { try decode(Idea.self, $0[0]) } }
-    public func saveIdea(_ idea: Idea) throws { try db.execute("INSERT INTO ideas(id,json) VALUES(?,?) ON CONFLICT(id) DO UPDATE SET json=excluded.json", [idea.id.uuidString, try encode(idea)]) }
+    public func saveIdea(_ idea: Idea) throws {
+        guard !idea.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { throw HarmonyError.invalid("An idea needs a title.") }
+        if let old = try db.rows("SELECT json FROM ideas WHERE id=?", [idea.id.uuidString]).first {
+            try db.execute("INSERT INTO idea_revisions(idea_id,json) VALUES(?,?)", [idea.id.uuidString, old[0]])
+        }
+        try db.execute("INSERT INTO ideas(id,json) VALUES(?,?) ON CONFLICT(id) DO UPDATE SET json=excluded.json", [idea.id.uuidString, try encode(idea)])
+    }
+    public func ideaHistory(_ id: UUID) throws -> [Idea] { try db.rows("SELECT json FROM idea_revisions WHERE idea_id=? ORDER BY id", [id.uuidString]).map { try decode(Idea.self, $0[0]) } }
     public func deleteIdea(_ id: UUID) throws { try db.execute("DELETE FROM ideas WHERE id=?", [id.uuidString]) }
     public func importIdeas(_ collection: IdeasExport) throws -> Int {
         let incoming = try collection.validated(); let existing = Set(try ideas().map(\.id)); var added = 0

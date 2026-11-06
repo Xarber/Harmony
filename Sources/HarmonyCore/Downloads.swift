@@ -15,6 +15,7 @@ public final class DirectDownload: NSObject, URLSessionDownloadDelegate, Sendabl
         var task: URLSessionDownloadTask?
         var cancelled = false
         var completed = false
+        var started = false
     }
     private let state = OSAllocatedUnfairLock(initialState: State())
     private let source: URL
@@ -26,7 +27,9 @@ public final class DirectDownload: NSObject, URLSessionDownloadDelegate, Sendabl
         self.source = source; self.destination = destination; self.progress = progress
     }
     public func run() async throws -> URL {
-        try await withTaskCancellationHandler {
+        let canStart = state.withLock { value in if value.started { return false }; value.started = true; return true }
+        guard canStart else { throw HarmonyError.invalid("This download transfer has already started. Create a new transfer to retry.") }
+        return try await withTaskCancellationHandler {
             try await withCheckedThrowingContinuation { continuation in
                 let config = URLSessionConfiguration.ephemeral
                 config.timeoutIntervalForRequest = 30; config.timeoutIntervalForResource = 3600

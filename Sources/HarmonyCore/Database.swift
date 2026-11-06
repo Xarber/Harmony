@@ -6,7 +6,10 @@ import CSQLite
 final class Database {
     private var handle: OpaquePointer?
     init(url: URL) throws {
-        guard sqlite3_open(url.path, &handle) == SQLITE_OK else { throw HarmonyError.storage("Cannot open library database.") }
+        guard sqlite3_open(url.path, &handle) == SQLITE_OK else { sqlite3_close(handle); handle = nil; throw HarmonyError.storage("Cannot open library database.") }
+        do {
+        let version = Int(try rows("PRAGMA user_version").first?.first ?? "0") ?? 0
+        guard version <= 1 else { throw HarmonyError.unsupported("This library was created by a newer Harmony version. Open it with that version; no schema changes were applied.") }
         try execute("PRAGMA foreign_keys=ON; PRAGMA journal_mode=WAL; PRAGMA busy_timeout=5000;")
         try execute("""
         CREATE TABLE IF NOT EXISTS tracks(id TEXT PRIMARY KEY, title TEXT NOT NULL, artist TEXT, album TEXT, json TEXT NOT NULL);
@@ -19,9 +22,11 @@ final class Database {
         CREATE TABLE IF NOT EXISTS lyrics_revisions(id INTEGER PRIMARY KEY, track_id TEXT NOT NULL, json TEXT NOT NULL);
         CREATE TABLE IF NOT EXISTS metadata_revisions(id INTEGER PRIMARY KEY, track_id TEXT NOT NULL, json TEXT NOT NULL);
         CREATE TABLE IF NOT EXISTS ideas(id TEXT PRIMARY KEY, json TEXT NOT NULL);
+        CREATE TABLE IF NOT EXISTS idea_revisions(id INTEGER PRIMARY KEY, idea_id TEXT NOT NULL, json TEXT NOT NULL);
         CREATE TABLE IF NOT EXISTS state(key TEXT PRIMARY KEY, json TEXT NOT NULL);
         PRAGMA user_version=1;
         """)
+        } catch { sqlite3_close(handle); handle = nil; throw error }
     }
     deinit { sqlite3_close(handle) }
     func execute(_ sql: String, _ values: [String?] = []) throws {

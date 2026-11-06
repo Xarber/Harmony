@@ -175,3 +175,72 @@ private func tone(_ root: URL, duration: Double = 2) throws -> URL {
         #expect(restored.currentTrack?.id == track.id); #expect(!restored.isPlaying); #expect(restored.position > 2)
     }
 }
+
+@Suite struct SafetyAndLifecycleTests {
+    @Test func ideasSchemaAndStatusHistory() async throws {
+        let root = try temporary(); defer { try? FileManager.default.removeItem(at: root) }
+        let store = try LibraryStore(root: root)
+        var idea = Idea(title: "A persistent observation"); try await store.saveIdea(idea)
+        idea.status = .deferred; try await store.saveIdea(idea)
+        idea.status = .approved; try await store.saveIdea(idea)
+        let history = try await store.ideaHistory(idea.id)
+        #expect(history.map(\.status) == [.pending, .deferred])
+        var export = IdeasExport(ideas: [idea]); export.schemaVersion = 2
+        #expect(throws: (any Error).self) { try export.validated() }
+    }
+    @Test func downloadAndFetchRejectUnsafeURLs() {
+        let destination = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        for text in ["http://example.org/a.mp3", "file:///tmp/a.mp3", "https://user:password@example.org/a.mp3", "https://example.org/a.html"] {
+            #expect(throws: (any Error).self) { try DirectDownload(source: URL(string: text)!, destination: destination, progress: { _ in }) }
+        }
+        #expect(throws: (any Error).self) { try FetchAdapter(baseURL: URL(string: "http://example.org")!, token: "test-only-not-a-secret") }
+    }
+    @Test func maliciousPlaylistJSONIdentifiersRejected() throws {
+        let entry = PlaylistEntry(title: "Original")
+        let playlist = Playlist(name: "Invalid", entries: [entry, entry])
+        let data = try JSONEncoder().encode(playlist)
+        #expect(throws: (any Error).self) { try PlaylistParser.parse(data, format: .json, name: "Invalid") }
+    }
+}
+
+@Suite struct DatabaseCompatibilityTests {
+    @Test func futureSchemaIsRejectedWithoutDowngrading() async throws {
+        let root = try temporary(); defer { try? FileManager.default.removeItem(at: root) }
+        let database = try Database(url: root.appendingPathComponent("Library.sqlite"))
+        try database.execute("PRAGMA user_version=99")
+        #expect(throws: (any Error).self) { try LibraryStore(root: root) }
+        #expect(try database.rows("PRAGMA user_version")[0][0] == "99")
+    }
+}
+
+@Suite struct DeveloperAccessTests {
+    @Test @MainActor func tripleTapActivityAndExpiry() {
+        let access = DeveloperAccess(); let start = Date(timeIntervalSince1970: 1000)
+        access.tapVersion(at: start); access.tapVersion(at: start); #expect(!access.enabled(at: start))
+        access.tapVersion(at: start); #expect(access.enabled(at: start))
+        access.interact(at: start.addingTimeInterval(20)); #expect(access.enabled(at: start.addingTimeInterval(40)))
+        access.expire(at: start.addingTimeInterval(51)); #expect(!access.enabled(at: start.addingTimeInterval(51)))
+        access.tapVersion(at: start); access.reset(); access.tapVersion(at: start); #expect(!access.enabled(at: start))
+    }
+}
+
+@Suite struct EmbeddedMetadataTests {
+    @available(macOS 15.0, iOS 18.0, *)
+    @Test func taggedM4AImport() async throws {
+        let root = try temporary(); defer { try? FileManager.default.removeItem(at: root) }
+        let source = try tone(root)
+        let exporter = try #require(AVAssetExportSession(asset: AVURLAsset(url: source), presetName: AVAssetExportPresetAppleM4A))
+        func tag(_ identifier: AVMetadataIdentifier, _ value: String) -> AVMetadataItem {
+            let item = AVMutableMetadataItem(); item.identifier = identifier; item.value = value as NSString; return item
+        }
+        exporter.metadata = [tag(.commonIdentifierTitle, "Original tagged tone"), tag(.commonIdentifierArtist, "OpenRecode QA"), tag(.commonIdentifierAlbumName, "Generated test collection")]
+        let output = root.appendingPathComponent("Tagged.m4a")
+        try await exporter.export(to: output, as: .m4a)
+        let store = try LibraryStore(root: root.appendingPathComponent("Library"))
+        let imported = try await store.importAudio(output)
+        #expect(imported.track.title == "Original tagged tone")
+        #expect(imported.track.artist == "OpenRecode QA")
+        #expect(imported.track.album == "Generated test collection")
+        #expect(imported.track.provenance["title"] == "Embedded tags")
+    }
+}
