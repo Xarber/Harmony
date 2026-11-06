@@ -1,0 +1,76 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write sources
+[1/5] Write swift-version--1AB21518FC5DEDBE.txt
+[3/7] Emitting module HarmonyCore
+[4/7] Compiling HarmonyCore Database.swift
+[4/9] Write Objects.LinkFileList
+[6/9] Linking HarmonyPackageTests
+[7/9] Linking Harmony
+[8/9] Applying Harmony
+Build complete! (1.29s)
+warning: '--build-system native' has been deprecated and will be removed in a future release; please report an issue at https://github.com/swiftlang/swift-package-manager/issues if you are unable to adopt the default build system.
+􀟈  Test run started.
+􀄵  Testing Library Version: 2084
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Suite SafetyAndLifecycleTests started.
+􀟈  Suite DeveloperAccessTests started.
+􀟈  Suite LibraryIntegrationTests started.
+􀟈  Suite PlaylistTests started.
+􀟈  Test ideasSchemaAndStatusHistory() started.
+􀟈  Test downloadAndFetchRejectUnsafeURLs() started.
+􀟈  Test actualPlayerClockPauseSeekAndRestoration() started.
+􀟈  Test maliciousPlaylistJSONIdentifiersRejected() started.
+􀟈  Test tripleTapActivityAndExpiry() started.
+􀟈  Test metadataBackupRestoreKeepsExistingRecordsAndMissingAudio() started.
+􀟈  Test pathsAndInvalidMediaRejected() started.
+􀟈  Test exportRoundTrip(_:) started.
+􀟈  Test csvSupportsQuotesCommasAndNewlines() started.
+􀟈  Test plainTrackList() started.
+􀟈  Test rejectHLSAndEntities() started.
+􀟈  Test m3uPreservesOrderAndRepeatedOccurrences() started.
+􀟈  Suite LyricsAndMatchingTests started.
+􀟈  Suite EmbeddedMetadataTests started.
+􀟈  Suite DatabaseCompatibilityTests started.
+􀟈  Test realAudioImportDuplicatesPersistenceAndExport() started.
+􀟈  Test case passing 1 argument format → .json to exportRoundTrip(_:) started.
+􀟈  Test ideasMergeAndLyricsRevisionPersistence() started.
+􀟈  Test case passing 1 argument format → .csv to exportRoundTrip(_:) started.
+􀟈  Test case passing 1 argument format → .xspf to exportRoundTrip(_:) started.
+􀟈  Test xspfAndPLS() started.
+􀟈  Test case passing 1 argument format → .m3u8 to exportRoundTrip(_:) started.
+􁁛  Test csvSupportsQuotesCommasAndNewlines() passed after 0.001 seconds.
+􁁛  Test plainTrackList() passed after 0.001 seconds.
+􁁛  Test exportRoundTrip(_:) with 4 test cases passed after 0.001 seconds.
+􁁛  Test maliciousPlaylistJSONIdentifiersRejected() passed after 0.001 seconds.
+􀟈  Test titleAloneNeverExactAndVersionsStayDistinct() started.
+􀟈  Test invalidTimestampsAndPlainLyrics() started.
+􀟈  Test queueRepeatShuffleAndDuplicateItems() started.
+􀟈  Test lrcRepeatedTimestampsOffsetAndFractions() started.
+􀟈  Test taggedM4AImport() started.
+􀟈  Test futureSchemaIsRejectedWithoutDowngrading() started.
+􁁛  Test m3uPreservesOrderAndRepeatedOccurrences() passed after 0.001 seconds.
+􁁛  Test rejectHLSAndEntities() passed after 0.001 seconds.
+􁁛  Test queueRepeatShuffleAndDuplicateItems() passed after 0.001 seconds.
+􁁛  Test titleAloneNeverExactAndVersionsStayDistinct() passed after 0.001 seconds.
+􁁛  Test xspfAndPLS() passed after 0.001 seconds.
+􁁛  Test invalidTimestampsAndPlainLyrics() passed after 0.001 seconds.
+􁁛  Suite PlaylistTests passed after 0.002 seconds.
+􁁛  Test lrcRepeatedTimestampsOffsetAndFractions() passed after 0.001 seconds.
+􁁛  Suite LyricsAndMatchingTests passed after 0.002 seconds.
+􁁛  Test downloadAndFetchRejectUnsafeURLs() passed after 0.002 seconds.
+􁁛  Test ideasSchemaAndStatusHistory() passed after 0.014 seconds.
+􁁛  Suite SafetyAndLifecycleTests passed after 0.014 seconds.
+􁁛  Test futureSchemaIsRejectedWithoutDowngrading() passed after 0.014 seconds.
+􁁛  Suite DatabaseCompatibilityTests passed after 0.014 seconds.
+􁁛  Test tripleTapActivityAndExpiry() passed after 0.030 seconds.
+􁁛  Suite DeveloperAccessTests passed after 0.031 seconds.
+􁁛  Test pathsAndInvalidMediaRejected() passed after 0.040 seconds.
+􁁛  Test metadataBackupRestoreKeepsExistingRecordsAndMissingAudio() passed after 0.050 seconds.
+􁁛  Test ideasMergeAndLyricsRevisionPersistence() passed after 0.050 seconds.
+􁁛  Test realAudioImportDuplicatesPersistenceAndExport() passed after 0.053 seconds.
+􁁛  Test taggedM4AImport() passed after 0.124 seconds.
+􁁛  Suite EmbeddedMetadataTests passed after 0.125 seconds.
+􁁛  Test actualPlayerClockPauseSeekAndRestoration() passed after 1.967 seconds.
+􁁛  Suite LibraryIntegrationTests passed after 1.968 seconds.
+􁁛  Test run with 21 tests in 7 suites passed after 1.968 seconds.

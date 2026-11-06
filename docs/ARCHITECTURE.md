@@ -27,6 +27,6 @@ Artist and album display groupings currently derive from track fields; separate 
 
 ## Errors and lifecycle
 
-Storage initialization failure shows a recoverable error rather than recreating/deleting a database. Imports copy into disposable staging, inspect audio, hash bytes and move atomically on the same volume before committing a record. Orphan cleanup and transactional file journaling still need hardening for a crash after file movement. Player operations use generation IDs to discard stale asynchronous track loads. Paused queue restoration never starts audio unexpectedly.
+Newer database schema versions are rejected without downgrading. Storage initialization failure shows a recoverable error rather than recreating/deleting a database. Imports copy into disposable staging, inspect audio, hash bytes and move atomically on the same volume before committing a record. Orphan cleanup and transactional file journaling still need hardening for a crash after file movement. Player operations use generation IDs to discard stale asynchronous track loads. Paused queue restoration never starts audio unexpectedly.
 
 See the roadmap for known gaps. No complete-application audit or production readiness is claimed.
