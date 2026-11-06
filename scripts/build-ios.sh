@@ -2,6 +2,10 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 set -eu
 HARMONY_VARIANT=${1:?Use unsigned-device or simulator}
+if [ -n "$(git status --porcelain)" ]; then
+    echo 'Commit the intended source and documentation before producing versioned iOS artifacts.' >&2
+    exit 1
+fi
 HARMONY_SHA=$(git rev-parse HEAD)
 HARMONY_CHANNEL=$(git branch --show-current)
 case "$HARMONY_VARIANT" in

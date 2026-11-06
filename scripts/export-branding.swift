@@ -5,9 +5,9 @@ let output = URL(fileURLWithPath: CommandLine.arguments.dropFirst().first ?? "as
 try FileManager.default.createDirectory(at: output, withIntermediateDirectories: true)
 // Reproducible native rendering of the SVG master's simple geometry.
 for size in [32, 180, 192, 512, 1024] {
-    let rep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: size, pixelsHigh: size, bitsPerSample: 8, samplesPerPixel: 3, hasAlpha: false, isPlanar: false, colorSpaceName: .deviceRGB, bytesPerRow: 0, bitsPerPixel: 0)!
+    let context = CGContext(data: nil, width: size, height: size, bitsPerComponent: 8, bytesPerRow: size * 4, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.noneSkipLast.rawValue)!
     NSGraphicsContext.saveGraphicsState()
-    NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: rep)
+    NSGraphicsContext.current = NSGraphicsContext(cgContext: context, flipped: false)
     let scale = CGFloat(size) / 1024
     let transform = NSAffineTransform(); transform.scale(by: scale); transform.concat()
     NSColor(srgbRed: 70/255, green: 77/255, blue: 206/255, alpha: 1).setFill()
@@ -19,6 +19,7 @@ for size in [32, 180, 192, 512, 1024] {
     NSColor.white.setFill()
     for rect in [NSRect(x: 254, y: 300, width: 100, height: 424), NSRect(x: 670, y: 300, width: 100, height: 424), NSRect(x: 462, y: 216, width: 100, height: 592), NSRect(x: 328, y: 462, width: 368, height: 100)] { NSBezierPath(roundedRect: rect, xRadius: 50, yRadius: 50).fill() }
     NSGraphicsContext.restoreGraphicsState()
+    let rep = NSBitmapImageRep(cgImage: context.makeImage()!)
     try rep.representation(using: .png, properties: [:])!.write(to: output.appendingPathComponent("harmony-\(size).png"))
 }
 

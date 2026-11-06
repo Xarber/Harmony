@@ -1,0 +1,6 @@
+Harmony — OpenRecode
+Copyright (c) 2026 Harmony contributors.
+Original application code and branding are licensed AGPL-3.0-only; see LICENSE.
+Apple frameworks and SF Symbols are supplied by the operating system under their applicable terms.
+System SQLite is used through its public API. No third-party music, album artwork or lyrics are bundled.
+The optional generated QA fixtures are original synthesized tones and authored test lines.
