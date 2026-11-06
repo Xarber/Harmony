@@ -1,0 +1,37 @@
+name: Apple validation and private artifacts
+on:
+  workflow_dispatch:
+  push:
+    branches: [beta, main]
+permissions:
+  contents: read
+concurrency:
+  group: harmony-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  core-tests:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift --version
+      - run: swift test
+  ios:
+    name: iOS ${{ matrix.variant }}
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        variant: [unsigned-device, simulator]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and package
+        env:
+          VARIANT: ${{ matrix.variant }}
+        run: scripts/build-ios.sh "$VARIANT"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Harmony-${{ matrix.variant }}-${{ github.sha }}
+          path: artifacts/*
+          if-no-files-found: error
+  # No publication job. Repository and public distribution are not authorized.
+  # Android is outside this native Apple project's supported platform scope.

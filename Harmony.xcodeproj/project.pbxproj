@@ -1,0 +1,38 @@
+// !$*UTF8*$!
+{ archiveVersion = 1; classes = {}; objectVersion = 60; objects = {
+EF750626223EE67B9F908F26 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/HarmonyApp/HarmonyApp.swift"; sourceTree = SOURCE_ROOT; };
+E75BAD4E1FCFBF997DAF53D0 = { isa = PBXBuildFile; fileRef = EF750626223EE67B9F908F26; };
+D1B5C3F08217F32294FC3DE0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/HarmonyApp/LibraryViews.swift"; sourceTree = SOURCE_ROOT; };
+DB6274D33C0D7595F6110228 = { isa = PBXBuildFile; fileRef = D1B5C3F08217F32294FC3DE0; };
+150C536289322324B4478801 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/HarmonyApp/MetadataView.swift"; sourceTree = SOURCE_ROOT; };
+9C5E963E7E238D380F487D05 = { isa = PBXBuildFile; fileRef = 150C536289322324B4478801; };
+138B3AC35B3644A2A2C998F6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/HarmonyApp/PlayerViews.swift"; sourceTree = SOURCE_ROOT; };
+08374F9CD6FC3DF25FE5B71D = { isa = PBXBuildFile; fileRef = 138B3AC35B3644A2A2C998F6; };
+192F76C6CA4489EFCC96C8BA = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/HarmonyApp/PlaylistViews.swift"; sourceTree = SOURCE_ROOT; };
+A5B04EBE009CC8D72FD03BC2 = { isa = PBXBuildFile; fileRef = 192F76C6CA4489EFCC96C8BA; };
+7EF7ABBF0DF44853AB0C5DA7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/HarmonyApp/ReleaseCatalog.swift"; sourceTree = SOURCE_ROOT; };
+C2BD93E28A507AC4D6F8B033 = { isa = PBXBuildFile; fileRef = 7EF7ABBF0DF44853AB0C5DA7; };
+9CFF2AC10338BC2F6B45E34F = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/HarmonyApp/SettingsViews.swift"; sourceTree = SOURCE_ROOT; };
+D8D55C21143DB41D9A4400B1 = { isa = PBXBuildFile; fileRef = 9CFF2AC10338BC2F6B45E34F; };
+8BF729FFE074CAEE622C0292 = { isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Sources/HarmonyApp/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+6705CD5012A843999155C633 = { isa = PBXBuildFile; fileRef = 8BF729FFE074CAEE622C0292; };
+A8792157CB4F27FB949C035F = { isa = PBXFileReference; explicitFileType = wrapper.application; path = Harmony.app; sourceTree = BUILT_PRODUCTS_DIR; };
+BC4A71180870F7945155FBB0 = { isa = XCLocalSwiftPackageReference; relativePath = .; };
+0D45F5FD462B8C70BFFB1002 = { isa = XCSwiftPackageProductDependency; package = BC4A71180870F7945155FBB0; productName = HarmonyCore; };
+D8548042BF4146FC550FDCF3 = { isa = PBXBuildFile; productRef = 0D45F5FD462B8C70BFFB1002; };
+2BDC836913C0251C655AC270 = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (E75BAD4E1FCFBF997DAF53D0,DB6274D33C0D7595F6110228,9C5E963E7E238D380F487D05,08374F9CD6FC3DF25FE5B71D,A5B04EBE009CC8D72FD03BC2,C2BD93E28A507AC4D6F8B033,D8D55C21143DB41D9A4400B1); runOnlyForDeploymentPostprocessing = 0; };
+8FEDE0DBE491769B2DD090C5 = { isa = PBXFileReference; lastKnownFileType = text.json; path = Sources/HarmonyApp/Resources/releases.json; sourceTree = SOURCE_ROOT; };
+8752271771C6A13B5B2C19FF = { isa = PBXBuildFile; fileRef = 8FEDE0DBE491769B2DD090C5; };
+B4A5B8DEEC6F3BA340C44838 = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (6705CD5012A843999155C633,8752271771C6A13B5B2C19FF); runOnlyForDeploymentPostprocessing = 0; };
+85A1A7D12D3BA9F4EB2AEE07 = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (D8548042BF4146FC550FDCF3); runOnlyForDeploymentPostprocessing = 0; };
+73EBF6644258C120893E685D = { isa = XCBuildConfiguration; name = Debug; buildSettings = { CLANG_ENABLE_MODULES = YES; SWIFT_VERSION = 6.0; IPHONEOS_DEPLOYMENT_TARGET = 17.0; SDKROOT = iphoneos; SWIFT_STRICT_CONCURRENCY = complete; }; };
+6C7EFF6369083C8E1F2B1994 = { isa = XCBuildConfiguration; name = Debug; buildSettings = { PRODUCT_BUNDLE_IDENTIFIER = it.xarber.harmony; PRODUCT_NAME = Harmony; INFOPLIST_FILE = Config/Info.plist; GENERATE_INFOPLIST_FILE = NO; MARKETING_VERSION = 0.1.0; CURRENT_PROJECT_VERSION = 1; HARMONY_COMMIT = development; TARGETED_DEVICE_FAMILY = "1,2"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SUPPORTS_MACCATALYST = NO; CODE_SIGN_STYLE = Automatic; ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor; SWIFT_APPROACHABLE_CONCURRENCY = YES; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; DEBUG_INFORMATION_FORMAT = dwarf; SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG; }; };
+0B0C687DF8B6B8DC790B519C = { isa = XCBuildConfiguration; name = Release; buildSettings = { CLANG_ENABLE_MODULES = YES; SWIFT_VERSION = 6.0; IPHONEOS_DEPLOYMENT_TARGET = 17.0; SDKROOT = iphoneos; SWIFT_STRICT_CONCURRENCY = complete; }; };
+DD75E2CB1C510A828AC72D96 = { isa = XCBuildConfiguration; name = Release; buildSettings = { PRODUCT_BUNDLE_IDENTIFIER = it.xarber.harmony; PRODUCT_NAME = Harmony; INFOPLIST_FILE = Config/Info.plist; GENERATE_INFOPLIST_FILE = NO; MARKETING_VERSION = 0.1.0; CURRENT_PROJECT_VERSION = 1; HARMONY_COMMIT = development; TARGETED_DEVICE_FAMILY = "1,2"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SUPPORTS_MACCATALYST = NO; CODE_SIGN_STYLE = Automatic; ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor; SWIFT_APPROACHABLE_CONCURRENCY = YES; SWIFT_OPTIMIZATION_LEVEL = "-O"; DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym"; }; };
+84556665A75F591C69928D6A = { isa = XCConfigurationList; buildConfigurations = (73EBF6644258C120893E685D,0B0C687DF8B6B8DC790B519C); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+9DAF09C8CA7A89822AF071D2 = { isa = XCConfigurationList; buildConfigurations = (6C7EFF6369083C8E1F2B1994,DD75E2CB1C510A828AC72D96); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+34A04005BCAF206EEC990BD9 = { isa = PBXNativeTarget; buildConfigurationList = 9DAF09C8CA7A89822AF071D2; buildPhases = (2BDC836913C0251C655AC270,85A1A7D12D3BA9F4EB2AEE07,B4A5B8DEEC6F3BA340C44838); buildRules = (); dependencies = (); name = Harmony; packageProductDependencies = (0D45F5FD462B8C70BFFB1002); productName = Harmony; productReference = A8792157CB4F27FB949C035F; productType = "com.apple.product-type.application"; };
+0A3E27B8CA818264D75C8D81 = { isa = PBXGroup; children = (A8792157CB4F27FB949C035F); name = Products; sourceTree = "<group>"; };
+AD936FCBED631FA67E05C3EA = { isa = PBXGroup; children = (EF750626223EE67B9F908F26,D1B5C3F08217F32294FC3DE0,150C536289322324B4478801,138B3AC35B3644A2A2C998F6,192F76C6CA4489EFCC96C8BA,7EF7ABBF0DF44853AB0C5DA7,9CFF2AC10338BC2F6B45E34F,8BF729FFE074CAEE622C0292,8FEDE0DBE491769B2DD090C5,0A3E27B8CA818264D75C8D81); sourceTree = "<group>"; };
+244210E48437B6556980A702 = { isa = PBXProject; attributes = { LastUpgradeCheck = 2600; }; buildConfigurationList = 84556665A75F591C69928D6A; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; knownRegions = (en,Base); mainGroup = AD936FCBED631FA67E05C3EA; productRefGroup = 0A3E27B8CA818264D75C8D81; packageReferences = (BC4A71180870F7945155FBB0); projectDirPath = ""; projectRoot = ""; targets = (34A04005BCAF206EEC990BD9); };
+}; rootObject = 244210E48437B6556980A702; }

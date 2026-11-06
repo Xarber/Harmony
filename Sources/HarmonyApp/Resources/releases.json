@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "releases": [
+    {
+      "version": "0.1.0",
+      "build": 1,
+      "date": "2026-11-06",
+      "channel": "development",
+      "highlights": [
+        {"title": "An offline home for your audio", "icon": "music.note.house"},
+        {"title": "Import files and review playlists", "icon": "square.and.arrow.down"},
+        {"title": "Local lyrics and metadata editing", "icon": "quote.bubble"},
+        {"title": "Persistent developer ideas", "icon": "lightbulb"}
+      ],
+      "fixes": ["Initial development preview. No previous application release."],
+      "limitations": ["iPhone background audio, lock-screen controls and signing require device validation.", "Provider adapters and full audio backup remain incomplete."],
+      "ideaIDs": []
+    }
+  ]
+}
