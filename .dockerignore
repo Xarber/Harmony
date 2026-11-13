@@ -1,0 +1,8 @@
+*
+!infra/
+!infra/xcenter/
+!infra/xcenter/Dockerfile
+!infra/xcenter/nginx.conf
+!web/
+!web/dist/
+!web/dist/**

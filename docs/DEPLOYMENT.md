@@ -21,3 +21,11 @@ There is no authorized release repository or update manifest endpoint; automatic
 ## Rollback
 
 No production deployment exists to roll back. For development, keep the library directory and original files before testing schema changes. Metadata-only backup is not an audio backup. Use atomic Git commits to revert code changes; never delete user audio to roll back an application build. Future migrations require schema-version checks and a recoverable database snapshot.
+
+## X-Center web staging
+
+X-Center is the default hosting target. The web workflow prepares a static artifact with `node web/build.mjs`. The candidate container files live in `infra/xcenter/`. They serve static files and expose `/health`. The Compose port binds to loopback, and the container has a read-only filesystem, resource limits and no mounted library. Browser audio never enters the container.
+
+Before activation, verify the X-Center access scope, select an unused loopback port, pin the approved base image digest and stage the exact tested commit. Validate the Compose configuration, launch the isolated service and check `/health`, `/build.json`, the manifest, audio import and offline reopen through the intended HTTPS ingress. Configure access controls at the existing proxy before sharing a private URL. Preserve the previous image and proxy mapping for rollback. The static service does not own user music backups. Browser users keep original files and export their data locally.
+
+X-Center deployment and container runtime validation are pending. Local browser tests used the loopback Node server. GitHub Actions contains an independent web artifact job. Its remote execution is pending.

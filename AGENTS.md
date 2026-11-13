@@ -4,11 +4,12 @@ Read `docs/INDEX.md`, `docs/ARCHITECTURE.md`, `docs/ROADMAP.md`, and `docs/IDEAS
 
 ## Authorized scope and workflow
 
-- Native Swift/SwiftUI; iOS/iPadOS 17+, macOS 14+. No Android or web implementation currently. A future web application must implement installable PWA and safe offline/update behavior.
+- Native Swift/SwiftUI; iOS/iPadOS 17+, macOS 14+. Web PWA lives in `web/`. Preserve the native SwiftUI targets. Evaluate Expo/React Native for future native Android requirements. See `docs/WEB.md`.
 - AGPL-3.0-only for original source. Do not relicense without explicit authorization. Media and external provider content retain their own rights.
 - Work on `testing` or a temporary isolated branch; promotion is `testing → beta → main`. Do not promote this development preview as stable.
-- The current task explicitly prohibits repository publication, public deployments, paid costs and modifications to unrelated projects. There is no GitHub remote or authorized publication channel. Do not create one implicitly.
-- Conventional Commits, atomic changes, documentation and a truthful test report are required. Never discard user changes.
+- The current task explicitly prohibits repository publication, public deployments, paid costs and modifications to unrelated projects. There is no GitHub remote or authorized publication channel. Check only the exact intended GitHub repository name before any authorized creation. Reuse a confirmed matching repository and preserve its history. X-Center is the default host. The deployment files are staged locally.
+- Conventional Commits, atomic changes, documentation and a truthful test report are required. Prefer configured hardware signing. If unavailable, commit unsigned without changing identity. Obtain approval before rewriting existing commits. Never discard user changes.
+- Consult relevant design and motion skills before substantial UI work. See `docs/DESIGN.md` for Harmony’s tokens, contrast, and accessibility behavior.
 - Run `scripts/check.sh`. It selects an existing stable SDK on this machine when the new CLT SDK lacks SwiftUI macros; it installs nothing. Use full Xcode for iOS validation.
 - Do not add dummy screens or claim mocked integrations work. Check `docs/ROADMAP.md` before assuming a provider or feature is implemented.
 

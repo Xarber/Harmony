@@ -1,0 +1,19 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# Loopback only. No existing X-Center proxy, port, network, data or service is modified.
+services:
+  harmony-web:
+    build:
+      context: ../..
+      dockerfile: infra/xcenter/Dockerfile
+    image: harmony-web:local
+    ports:
+      - "127.0.0.1:4185:8080"
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 64
+    mem_limit: 128m
+    cpus: 0.5
+    restart: unless-stopped

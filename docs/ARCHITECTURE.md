@@ -1,6 +1,6 @@
 # Architecture
 
-Harmony is a native SwiftUI application, not a hosted web player. iOS/iPadOS 17+ are primary; macOS 14+ shares the same source and is currently the validated runtime. Swift tools minimum is 6.2; initial compilation used Swift 6.4 and the existing stable macOS 26.5 SDK. No third-party runtime dependencies were added. System SQLite, AVFoundation, MediaPlayer, CryptoKit, Observation and SwiftUI provide the core.
+Harmony has a native SwiftUI application and a browser PWA. The browser owns its own IndexedDB library and HTML media player. See [Web application](WEB.md). iOS/iPadOS 17+ are primary; macOS 14+ shares the same source and is currently the validated runtime. Swift tools minimum is 6.2; initial compilation used Swift 6.4 and the existing stable macOS 26.5 SDK. No third-party runtime dependencies were added. System SQLite, AVFoundation, MediaPlayer, CryptoKit, Observation and SwiftUI provide the core.
 
 ## Ownership and boundaries
 

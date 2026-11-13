@@ -8,6 +8,15 @@ An OpenRecode personal music library and native player for iPhone, iPad and Mac.
 
 **Status: unreleased development preview, 0.1.0. The complete product specification is not yet implemented.** macOS compilation, automated real-audio playback and selected desktop UI flows have been verified. iOS builds and physical-device behavior require validation with full Xcode. See the [feature status matrix](docs/ROADMAP.md) and [test report](docs/reports/2026-11-06-validation.md).
 
+## Run in a browser
+
+```sh
+node web/build.mjs
+node web/server.mjs
+```
+
+Open http://127.0.0.1:4175/. Harmony remembers when you enter the library. The logo returns to the landing page. Imported audio remains in this browser. See the [web guide](docs/WEB.md).
+
 ## Run on Mac
 
 Requires Swift 6.2+ and a compatible Apple SDK already installed. No package dependencies are downloaded.

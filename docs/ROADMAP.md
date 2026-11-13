@@ -1,6 +1,6 @@
 # Feature status and remaining roadmap
 
-Status date: 2026-11-06. This is a functioning local-first development slice, **not the complete Harmony product and not release-ready**. The brief explicitly prioritizes phases 1–3, then metadata, lyrics, playlist imports and downloads when the whole scope cannot be completed in one execution. Native iOS validation is blocked by unavailable full Xcode, not by a demonstrated successful iOS build.
+Status date: 2026-11-13. This is a functioning local-first development slice, **not the complete Harmony product and not release-ready**. The brief explicitly prioritizes phases 1–3, then metadata, lyrics, playlist imports and downloads when the whole scope cannot be completed in one execution. Native iOS validation is blocked by unavailable full Xcode, not by a demonstrated successful iOS build.
 
 | Area | Status | Evidence and limits |
 | --- | --- | --- |
@@ -33,7 +33,8 @@ Status date: 2026-11-06. This is a functioning local-first development slice, **
 | Cross-device sync | Not implemented | No background P2P/cloud sync claim; local data stays on-device. |
 | Branding | Partially implemented | Layered editable SVG, reproducible opaque PNGs and iOS asset catalog. Full tinted/dark/platform-layered variants, banners and store visuals pending. |
 | iOS device IPA / simulator build | Blocked by platform tools | Project/scripts/parallel workflow prepared. Full Xcode unavailable; no artifact built here. |
-| Android / Web | Not implemented; outside chosen initial scope | No APK/AAB/PWA claimed. A future web app must meet PWA requirements. |
+| Web PWA | Implemented and locally tested | Root landing, remembered entry, browser library, audio, lyrics, playlists and service worker updates. Mobile installation and full native feature parity remain pending. |
+| Native Android | Deferred | Browser PWA covers supported Android browsers. Evaluate Expo/React Native when native Android capabilities are required. |
 | Release/deployment | Not implemented and not authorized | Local Git only; no remote job, published release, public worker or paid infrastructure. |
 
 ## Essential next validation
