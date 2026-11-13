@@ -5,6 +5,7 @@ import UniformTypeIdentifiers
 
 struct RootView: View {
     @Bindable var model: AppModel
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @AppStorage("onboarded") private var onboarded = false
     @AppStorage("lastSeenVersion") private var lastVersion = ""
     @State private var tab = 0
@@ -27,7 +28,8 @@ struct RootView: View {
                     }.buttonStyle(.plain).accessibilityLabel("Open Now Playing, \(track.title)")
                     Button { player.toggle() } label: { Image(systemName: player.isPlaying ? "pause.fill" : "play.fill").frame(width: 44, height: 44) }.accessibilityLabel(player.isPlaying ? "Pause" : "Play")
                     Button { Task { await player.next() } } label: { Image(systemName: "forward.fill").frame(width: 44, height: 44) }.accessibilityLabel("Next track")
-                }.padding(10).background(.regularMaterial, in: RoundedRectangle(cornerRadius: 20)).padding(.horizontal).padding(.bottom, 4)
+                }.padding(10).harmonyFloatingSurface().padding(.horizontal).padding(.bottom, 4)
+                .transition(.opacity)
             }
         }
         .overlay(alignment: .top) {
@@ -35,6 +37,8 @@ struct RootView: View {
                 VStack { HStack { Text("Importing music").font(.headline); Spacer(); Button("Cancel") { model.importTask?.cancel() } }; ProgressView(value: model.importProgress); Text(model.importMessage).font(.caption).lineLimit(1) }.padding().background(.regularMaterial, in: RoundedRectangle(cornerRadius: 16)).padding()
             }
         }
+        .animation(HarmonyMotion.stateChange(reduced: reduceMotion), value: model.player?.currentTrack?.id)
+        .animation(HarmonyMotion.stateChange(reduced: reduceMotion), value: model.importing)
         .toolbar { ToolbarItem { Button { settings = true } label: { Label("Settings", systemImage: "gearshape") } } }
         .fileImporter(isPresented: $importing, allowedContentTypes: [.audio, .data], allowsMultipleSelection: true) { result in
             switch result { case .success(let urls): model.importFiles(urls); case .failure(let error): model.error = error.localizedDescription }

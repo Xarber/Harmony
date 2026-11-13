@@ -35,7 +35,7 @@ struct PlayerView: View {
                         Button { player.toggle() } label: { Image(systemName: player.isPlaying ? "pause.fill" : "play.fill").font(.system(size: 30)).frame(width: 76, height: 76).foregroundStyle(.white).background(Color.harmony, in: Circle()) }.accessibilityLabel(player.isPlaying ? "Pause" : "Play")
                         Button { Task { await player.next() } } label: { Image(systemName: "forward.fill").font(.title) }.accessibilityLabel("Next")
                         Button { player.cycleRepeat() } label: { Image(systemName: player.queue.repeatMode == .one ? "repeat.1" : "repeat").foregroundStyle(player.queue.repeatMode == .off ? .secondary : Color.harmony) }.accessibilityLabel("Repeat \(player.queue.repeatMode.rawValue)")
-                    }.buttonStyle(.plain)
+                    }.buttonStyle(HarmonyPressStyle())
                     if let error = player.errorMessage { Label(error, systemImage: "exclamationmark.triangle").font(.callout).foregroundStyle(.red) }
                     #if os(iOS)
                     RoutePicker().frame(height: 44).accessibilityLabel("Audio output and AirPlay")
