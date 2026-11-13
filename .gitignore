@@ -9,3 +9,5 @@ xcuserdata/
 *.ipa
 *.app.zip
 *.harmonybackup
+web/dist/
+node_modules/

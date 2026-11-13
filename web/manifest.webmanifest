@@ -1,0 +1,20 @@
+{
+  "id": "/app/",
+  "name": "Harmony — Your Music",
+  "short_name": "Harmony",
+  "description": "A private offline music library for the recordings you own.",
+  "start_url": "/app/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f6f6fb",
+  "theme_color": "#6269f5",
+  "lang": "en",
+  "categories": ["music", "entertainment"],
+  "icons": [
+    {"src":"/assets/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"/assets/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"},
+    {"src":"/assets/maskable-512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}
+  ],
+  "shortcuts": [{"name":"Open library","url":"/app/"}],
+  "prefer_related_applications": false
+}
