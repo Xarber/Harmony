@@ -1,4 +1,4 @@
-name: Apple validation and private artifacts
+name: Harmony builds and validation
 on:
   workflow_dispatch:
   push:
@@ -17,21 +17,34 @@ jobs:
         with:
           node-version: '24'
       - run: node --test web/tests/*.test.mjs
-      - run: node web/build.mjs
+      - run: node web/build.mjs --production
+        env:
+          HARMONY_COMMIT: ${{ github.sha }}
       - uses: actions/upload-artifact@v4
         with:
           name: Harmony-web-${{ github.sha }}
           path: web/dist/
           if-no-files-found: error
   core-tests:
-    runs-on: macos-latest
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@v4
       - run: swift --version
       - run: swift test
+  macos:
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - run: scripts/build-mac.sh --release
+      - run: mkdir -p artifacts && ditto -c -k --keepParent .build/Harmony.app "artifacts/Harmony-macOS-$(git rev-parse --short HEAD).app.zip" && (cd artifacts && shasum -a 256 *.zip > SHA256SUMS.txt)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Harmony-macOS-${{ github.sha }}
+          path: artifacts/
+          if-no-files-found: error
   ios:
     name: iOS ${{ matrix.variant }}
-    runs-on: macos-latest
+    runs-on: macos-26
     strategy:
       fail-fast: false
       matrix:
@@ -47,5 +60,5 @@ jobs:
           name: Harmony-${{ matrix.variant }}-${{ github.sha }}
           path: artifacts/*
           if-no-files-found: error
-  # No publication job. Repository and public distribution are not authorized.
+  # Artifacts are build outputs. Stable releases require the release validation gate.
   # Android is outside this native Apple project's supported platform scope.

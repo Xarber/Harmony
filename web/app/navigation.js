@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-only
+import {config} from './config.js';
+
 const preference = 'harmony-entered-library';
-const isQA = () => new URLSearchParams(location.search).get('qa') === '1';
+const isQA = () => !config.production && new URLSearchParams(location.search).get('qa') === '1';
 
 function hasEntered() {
   try { return localStorage.getItem(preference) === 'yes'; }

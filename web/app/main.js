@@ -3,9 +3,10 @@ import {LibraryDB} from './storage.js';
 import {LocalPlayer} from './player.js';
 import {VERSION,BUILD,clock,parseList,candidates,parseLRC,activeLyric,validateIdeas} from './domain.js';
 import {icon,hydrateIcons} from './icons.js';
+import {config} from './config.js';
 import {configureNavigation} from './navigation.js';
 const $=selector=>document.querySelector(selector);
-const qa=new URLSearchParams(location.search).get('qa')==='1';
+const qa=!config.production && new URLSearchParams(location.search).get('qa')==='1';
 const db=new LibraryDB(qa?'harmony-web-qa-v1':'harmony-web-v1');
 const player=new LocalPlayer(db);
 let tracks=[],playlists=[],view='library',query='',currentPlaylist=null,preview=[],lyricTrack=null,lyricLines=[],lastLyric=-1,developerUntil=0,taps=0,importing=false,dirty=false;
@@ -61,9 +62,9 @@ function renderSettings(content){
  const appearance=card('Make it yours','Choose an appearance that feels at home.');const select=node('select');select.setAttribute('aria-label','Appearance');for(const name of ['system','light','dark'])select.append(new Option(name[0].toUpperCase()+name.slice(1),name));select.value=localStorage.getItem('harmony-theme')||'system';select.onchange=()=>{document.documentElement.dataset.theme=select.value;localStorage.setItem('harmony-theme',select.value);};appearance.append(select);content.append(appearance);
  const privacy=card('Your library stays here','Audio and metadata are stored in this browser’s IndexedDB. Nothing is uploaded. Browser storage can be cleared by the browser or operating system; keep your original files and exports.');privacy.append(button('Request persistent storage','shield',async()=>message(await navigator.storage?.persist?.()?'Persistent storage granted. Keep original files as a backup.':'This browser did not grant persistent storage. Keep original files as a backup.')));content.append(privacy);
  const portability=card('Take your collection with you','Export metadata and playlists. Audio is exported separately from each song’s download button.');portability.append(button('Export library metadata','download',()=>download(JSON.stringify({schemaVersion:1,project:'it.xarber.harmony.web',tracks,playlists},null,2),'Harmony-web-library.json')));content.append(portability);
- const updates=card('Updates',`Harmony ${VERSION} · ${BUILD}. The app checks for a new web shell on launch and foreground return. Updates only reload after you choose, with playback paused and edits saved.`);updates.append(button('Check for web updates','repeat',async()=>{const registration=await navigator.serviceWorker?.getRegistration();if(!registration)throw Error('Service workers are unavailable. Use HTTPS or localhost.');await registration.update();message(registration.waiting?'A web update is ready.':'Web update check finished. No waiting version was found.');}));updates.append(node('p','Native releases are not published. GitHub release checks will need an authorized source; no private access token is embedded.','hint'));content.append(updates);
- const about=card('About Harmony','An OpenRecode development preview. Browser audio support, storage and background playback vary by platform.');about.append(button(`Version ${VERSION} · tap three times for developer options`,null,()=>{if(++taps>=3){taps=0;developerUntil=Date.now()+30000;render();}},'text-link'));about.append(node('p','AGPL-3.0-only · Original audio, artwork and lyrics retain their own rights.','hint'));content.append(about);
- if(developerUntil>Date.now())renderIdeas(content);
+ const updates=card('Updates',`Harmony ${VERSION} · ${BUILD}. The app checks for a new web shell on launch and foreground return. Updates only reload after you choose, with playback paused and edits saved.`);updates.append(button('Check for web updates','repeat',async()=>{const registration=await navigator.serviceWorker?.getRegistration();if(!registration)throw Error('Service workers are unavailable. Use HTTPS or localhost.');await registration.update();message(registration.waiting?'A web update is ready.':'Web update check finished. No waiting version was found.');}));content.append(updates);
+ const about=card('About Harmony','A local music library from OpenRecode.');if(config.production) about.append(node('p', `Version ${VERSION}`, 'hint')); else about.append(button(`Version ${VERSION} · tap three times for developer options`,null,()=>{if(++taps>=3){taps=0;developerUntil=Date.now()+30000;render();}},'text-link'));about.append(node('p','AGPL-3.0-only · Original audio, artwork and lyrics retain their own rights.','hint'));content.append(about);
+ if(!config.production && developerUntil>Date.now())renderIdeas(content);
  const links=node('p');const link=node('a','Web guide & privacy');link.href='/guide.html';links.append(link);content.append(links);
 }
 function swiftDate(){return Date.now()/1000-978307200;}

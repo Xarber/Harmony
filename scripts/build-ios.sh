@@ -7,7 +7,7 @@ if [ -n "$(git status --porcelain)" ]; then
     exit 1
 fi
 HARMONY_SHA=$(git rev-parse HEAD)
-HARMONY_CHANNEL=$(git branch --show-current)
+HARMONY_CHANNEL=${GITHUB_REF_NAME:-$(git branch --show-current)}
 case "$HARMONY_VARIANT" in
     unsigned-device) HARMONY_SDK=iphoneos; HARMONY_DEST='generic/platform=iOS';;
     simulator) HARMONY_SDK=iphonesimulator; HARMONY_DEST='generic/platform=iOS Simulator';;
@@ -27,7 +27,8 @@ if [ "$HARMONY_VARIANT" = unsigned-device ]; then
 else
     ditto -c -k --keepParent "$HARMONY_PRODUCT" "artifacts/$HARMONY_NAME.app.zip"
 fi
-shasum -a 256 artifacts/* > artifacts/SHA256SUMS.txt
+(cd artifacts && shasum -a 256 "$HARMONY_NAME".*) > artifacts/SHA256SUMS.txt
+test -s artifacts/SHA256SUMS.txt
 python3 - "$HARMONY_SHA" "$HARMONY_CHANNEL" "$HARMONY_VARIANT" <<'PY'
 import json,sys
 from pathlib import Path
