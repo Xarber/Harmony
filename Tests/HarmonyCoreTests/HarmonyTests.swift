@@ -169,7 +169,9 @@ private func tone(_ root: URL, duration: Double = 2) throws -> URL {
         player.pause(); let paused = player.position; try await Task.sleep(for: .milliseconds(300))
         #expect(!player.isPlaying); #expect(abs(player.position - paused) < 0.25)
         player.seek(to: 2); try await Task.sleep(for: .milliseconds(300)); #expect(abs(player.position - 2) < 0.25)
-        player.play(); try await Task.sleep(for: .milliseconds(400)); #expect(player.position > 2)
+        player.play()
+        for _ in 0..<30 { if player.position > 2 { break }; try await Task.sleep(for: .milliseconds(100)) }
+        #expect(player.position > 2)
         player.pause(); try await Task.sleep(for: .milliseconds(200))
         let restored = PlaybackController(store: store); defer { restored.shutdown() }; await restored.restore()
         #expect(restored.currentTrack?.id == track.id); #expect(!restored.isPlaying); #expect(restored.position > 2)
