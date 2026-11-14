@@ -1,4 +1,4 @@
-name: Harmony builds and validation
+name: Harmony build matrix
 on:
   workflow_dispatch:
   push:
@@ -19,6 +19,7 @@ jobs:
       - run: node --test web/tests/*.test.mjs
       - run: node web/build.mjs --production
         env:
+          HARMONY_PUBLIC_URL: https://harmony.xcenter.it
           HARMONY_COMMIT: ${{ github.sha }}
       - uses: actions/upload-artifact@v4
         with:
