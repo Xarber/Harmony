@@ -1,6 +1,8 @@
 name: UADS quality
 on:
   workflow_dispatch:
+  push:
+    branches: [testing]
   pull_request:
     branches: [testing, beta, main]
 permissions:
