@@ -1,0 +1,23 @@
+{
+  "versionScheme": "semver",
+  "promotion": [
+    "testing",
+    "beta",
+    "main"
+  ],
+  "nativePublicationAuthorized": false,
+  "metadataTag": "sources-v1.0",
+  "artifactDigest": "sha256",
+  "states": [
+    "planned",
+    "built",
+    "validated",
+    "published",
+    "distributing",
+    "verified",
+    "partial",
+    "failed",
+    "rolled-back",
+    "superseded"
+  ]
+}

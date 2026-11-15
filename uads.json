@@ -1,0 +1,296 @@
+{
+  "uadsVersion": "sections-01-52",
+  "manifestVersion": 1,
+  "project": {
+    "name": "Harmony",
+    "repository": "Xarber/Harmony",
+    "profiles": [
+      "mobile-app",
+      "desktop-app",
+      "web-app"
+    ],
+    "framework": [
+      "SwiftUI / Swift Package Manager",
+      "JavaScript PWA"
+    ],
+    "platforms": [
+      "ios",
+      "ipados",
+      "macos",
+      "web"
+    ],
+    "hosting": "X-Center static Nginx"
+  },
+  "features": {
+    "pwa": "implemented",
+    "landingPage": "implemented",
+    "onboarding": "missing",
+    "developerOptions": "partial",
+    "ideas": "partial",
+    "screenshotRendering": "missing",
+    "sampleData": "test-fixtures-only",
+    "animations": "partial",
+    "plugins": "provider interfaces",
+    "peerToPeer": "missing"
+  },
+  "distribution": {
+    "web": "https://harmony.xcenter.it/",
+    "githubReleases": false,
+    "altSource": false,
+    "obtainium": false
+  },
+  "quality": {
+    "workflow": ".github/workflows/uads-quality.yml",
+    "budgets": "Config/performance-budgets.json",
+    "changedLineTarget": 80,
+    "changedBranchTarget": 70
+  },
+  "requirements": [
+    {
+      "id": "UADS-DOC-001",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-ARCH-001",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-DOC-002",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-CI-003",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-GIT-001",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-CI-002",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-PLAT-001",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-DATA-001",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-ARCH-002",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-DEV-001",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-REL-002",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-UI-001",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-UI-002",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-DATA-002",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-SEC-002",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-QA-001",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-OPS-002",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-DIST-001",
+      "applicability": "conditional",
+      "status": "not-applicable",
+      "rationale": "No alternative distribution channel is authorized or active.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-GIT-002",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-REL-003",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-PLAT-002",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-UI-003",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-DEV-002",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-UI-004",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-UI-005",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-DEV-003",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-OPS-003",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-DEV-004",
+      "applicability": "not-applicable",
+      "status": "not-applicable",
+      "rationale": "No required backend or active Fetch connection is configurable in the shipped app.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-DIST-002",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-REL-001",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-DOC-003",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-QA-002",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-SEC-001",
+      "applicability": "not-applicable",
+      "status": "not-applicable",
+      "rationale": "Harmony has no authenticated backend operations.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-OPS-001",
+      "applicability": "required",
+      "status": "pending",
+      "rationale": "Applies to the current Harmony repository or supported targets.",
+      "evidence": []
+    },
+    {
+      "id": "UADS-PLAT-003",
+      "applicability": "not-applicable",
+      "status": "not-applicable",
+      "rationale": "Android support is browser-only and has no native build target.",
+      "evidence": []
+    }
+  ],
+  "exceptions": []
+}

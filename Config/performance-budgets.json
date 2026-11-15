@@ -1,0 +1,12 @@
+{
+  "web": {
+    "initialJavaScriptBytes": 65536,
+    "lcpMs": 2500,
+    "inpMs": 200,
+    "cls": 0.1
+  },
+  "native": {
+    "coldStartMs": 2000,
+    "reference": "Representative Apple hardware, release build, empty library. Record device and OS."
+  }
+}

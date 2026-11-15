@@ -2,6 +2,8 @@
 
 Read `docs/INDEX.md`, `docs/ARCHITECTURE.md`, `docs/ROADMAP.md`, and `docs/IDEAS.json` before meaningful changes. The complete original product brief is in `docs/PROJECT_SPECIFICATION.md`. Apply the user's Universal Application Development Standards; project-specific decisions and truthful implementation status are recorded here.
 
+Before development read [the UADS manifest](uads.json), [requirements registry](docs/UADS_REQUIREMENTS.md) and [active task queue](docs/ACTIVE_TASKS.md). Maintain the queue in request order and record actual verification. Run the checks in [Testing](docs/TESTING.md) for affected changes.
+
 ## Authorized scope and workflow
 
 - Native Swift/SwiftUI; iOS/iPadOS 17+, macOS 14+. Web PWA lives in `web/`. Preserve the native SwiftUI targets. Evaluate Expo/React Native for future native Android requirements. See `docs/WEB.md`.

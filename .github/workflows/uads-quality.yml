@@ -1,0 +1,37 @@
+name: UADS quality
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [testing, beta, main]
+permissions:
+  contents: read
+concurrency:
+  group: uads-quality-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  web-and-policy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - run: python -m pip install jsonschema==4.26.0
+      - run: python -m pip check
+      - run: python scripts/validate-uads.py
+      - run: node --test --experimental-test-coverage web/tests/*.test.mjs
+      - run: node web/build.mjs --production
+      - run: python scripts/check-web-export.py
+  swift:
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - run: scripts/check.sh --enable-code-coverage
+      - run: test -s "$(swift test --show-codecov-path)"

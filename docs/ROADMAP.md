@@ -1,10 +1,10 @@
 # Feature status and remaining roadmap
 
-Status date: 2026-11-13. This is a functioning local-first development slice, **not the complete Harmony product and not release-ready**. The brief explicitly prioritizes phases 1–3, then metadata, lyrics, playlist imports and downloads when the whole scope cannot be completed in one execution. Native iOS validation is blocked by unavailable full Xcode, not by a demonstrated successful iOS build.
+Status date: 2026-11-13. This is a functioning local-first development slice, **not the complete Harmony product and not release-ready**. The brief explicitly prioritizes phases 1–3, then metadata, lyrics, playlist imports and downloads when the whole scope cannot be completed in one execution. Remote iOS packages have built successfully. Simulator and physical-device runtime validation remain outstanding.
 
 | Area | Status | Evidence and limits |
 | --- | --- | --- |
-| SwiftUI app and shared Apple core | Implemented and tested on macOS | App builds, launches and shows working library/player/editor flows. iOS target prepared; not compiled here. |
+| SwiftUI app and shared Apple core | Implemented and tested on macOS | App builds, launches and shows working library/player/editor flows. iOS device and simulator targets compiled in GitHub Actions. |
 | Persistent music library | Implemented and tested | SQLite reopening, edits, search, copies and hashes tested. Full normalized artist/album model and large-library benchmarks pending. |
 | Files audio importer | Implemented and tested on macOS | Real WAV and tagged M4A imports, duplicate hashing, preserved originals, invalid-media rejection; GUI picker import verified. ZIP/folder/share-extension flows pending. |
 | Songs, albums, artists, genres, favorites | Implemented but not fully tested | UI derives groups from stored fields. Album count changes after GUI metadata edit. Comprehensive browsing/large-text/device checks pending. |
@@ -32,10 +32,10 @@ Status date: 2026-11-13. This is a functioning local-first development slice, **
 | Advanced audio | Not implemented | EQ, crossfade, ReplayGain, guaranteed gapless, speed and quality comparison pending. |
 | Cross-device sync | Not implemented | No background P2P/cloud sync claim; local data stays on-device. |
 | Branding | Partially implemented | Layered editable SVG, reproducible opaque PNGs and iOS asset catalog. Full tinted/dark/platform-layered variants, banners and store visuals pending. |
-| iOS device IPA / simulator build | Blocked by platform tools | Project/scripts/parallel workflow prepared. Full Xcode unavailable; no artifact built here. |
+| iOS device IPA / simulator build | Built remotely | Run 43592619392 produced an arm64 iOS IPA and a universal simulator app. Both checksums matched. Runtime launch is pending. |
 | Web PWA | Implemented and locally tested | Root landing, remembered entry, browser library, audio, lyrics, playlists and service worker updates. Mobile installation and full native feature parity remain pending. |
 | Native Android | Deferred | Browser PWA covers supported Android browsers. Evaluate Expo/React Native when native Android capabilities are required. |
-| Release/deployment | Not implemented and not authorized | Local Git only; no remote job, published release, public worker or paid infrastructure. |
+| Release/deployment | Web deployed | The public PWA runs on X-Center. Native packaging is available in CI. Native publication requires separate authorization. |
 
 ## Essential next validation
 

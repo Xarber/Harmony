@@ -1,0 +1,600 @@
+[
+  {
+    "id": "UADS-DOC-001",
+    "title": "License and notices",
+    "sections": [
+      1
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Review source and dependency licenses",
+    "evidence": [
+      "LICENSE"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-ARCH-001",
+    "title": "Modular application design and regression preservation",
+    "sections": [
+      2,
+      3,
+      29
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Review affected boundaries and run regressions",
+    "evidence": [
+      "docs/ARCHITECTURE.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-DOC-002",
+    "title": "Current project and change documentation",
+    "sections": [
+      4,
+      28
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Review implementation against documentation",
+    "evidence": [
+      "docs/INDEX.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-CI-003",
+    "title": "Framework and dependency compatibility",
+    "sections": [
+      5
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Check installed toolchains and integrations",
+    "evidence": [
+      "Package.swift"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-GIT-001",
+    "title": "Repository workflow and Conventional Commits",
+    "sections": [
+      6,
+      7,
+      34,
+      36
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Inspect branches, history and task worktrees",
+    "evidence": [
+      "AGENTS.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-CI-002",
+    "title": "Parallel native build outputs",
+    "sections": [
+      8,
+      9
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Verify Apple workflow artifacts and checksums",
+    "evidence": [
+      ".github/workflows/build.yml"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-PLAT-001",
+    "title": "Multiplatform architecture and relevant integrations",
+    "sections": [
+      10,
+      11,
+      22,
+      26,
+      36
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Test platform features in their own runtimes",
+    "evidence": [
+      "docs/ROADMAP.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-DATA-001",
+    "title": "Local data ownership and peer synchronization",
+    "sections": [
+      12
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Verify local operation and review sync applicability",
+    "evidence": [
+      "docs/ARCHITECTURE.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-ARCH-002",
+    "title": "Extension points and distribution variants",
+    "sections": [
+      13,
+      14
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Review capability contracts and any edition boundaries",
+    "evidence": [
+      "docs/ARCHITECTURE.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-DEV-001",
+    "title": "Developer Options activation and diagnostics",
+    "sections": [
+      15
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Verify access lifecycle and redaction",
+    "evidence": [
+      "docs/ROADMAP.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-REL-002",
+    "title": "What's New and changelog",
+    "sections": [
+      16
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Verify first launch, subsequent versions and release history",
+    "evidence": [
+      "CHANGELOG.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-UI-001",
+    "title": "Accessible interface and information hierarchy",
+    "sections": [
+      17,
+      18,
+      36,
+      42
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Manual accessibility review and automated web accessibility checks",
+    "evidence": [
+      "docs/DESIGN.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-UI-002",
+    "title": "Motion and reduced motion",
+    "sections": [
+      18,
+      36
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Exercise navigation and reduced-motion preferences",
+    "evidence": [
+      "docs/DESIGN.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-DATA-002",
+    "title": "Data provenance and sample isolation",
+    "sections": [
+      19,
+      20,
+      37
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Exercise fixtures with an isolated store",
+    "evidence": [
+      "docs/SECURITY.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-SEC-002",
+    "title": "Security and privacy controls",
+    "sections": [
+      21,
+      43
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Review local files, external providers and browser trust boundaries",
+    "evidence": [
+      "docs/SECURITY.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-QA-001",
+    "title": "CI source quality and regressions",
+    "sections": [
+      23,
+      42,
+      48,
+      49
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Run manifest validation, Swift and web checks",
+    "evidence": [
+      ".github/workflows/uads-quality.yml"
+    ],
+    "check": "uads-quality.yml",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-OPS-002",
+    "title": "Staged deployment and rollback",
+    "sections": [
+      24,
+      36,
+      45
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Check production build identity and exercise rollback separately",
+    "evidence": [
+      "docs/DEPLOYMENT.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-DIST-001",
+    "title": "Alternative installation and distribution synchronization",
+    "sections": [
+      25,
+      39,
+      40,
+      49
+    ],
+    "applicability": "No alternative distribution channel is authorized or active.",
+    "priority": "mandatory",
+    "verification": "Validate live sources for authorized native channels",
+    "evidence": [
+      "docs/DEPLOYMENT.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-GIT-002",
+    "title": "Task scope, authorization and persistent queue",
+    "sections": [
+      27,
+      30,
+      50,
+      51,
+      52
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Reconcile ordered tasks against implementation evidence",
+    "evidence": [
+      "docs/ACTIVE_TASKS.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-REL-003",
+    "title": "Channel-compatible automatic updates",
+    "sections": [
+      31
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Test update discovery and compatible installation",
+    "evidence": [
+      "docs/DEPLOYMENT.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-PLAT-002",
+    "title": "Installable and offline web app",
+    "sections": [
+      32
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Verify manifest, worker, offline startup and browser installation",
+    "evidence": [
+      "docs/WEB.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-UI-003",
+    "title": "Original branding and layered source assets",
+    "sections": [
+      33
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Review SVG sources and platform exports",
+    "evidence": [
+      "docs/BRANDING.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-DEV-002",
+    "title": "Developer Ideas and portable persistence",
+    "sections": [
+      35
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Test status history, persistence and import conflicts",
+    "evidence": [
+      "docs/features/IDEAS.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-UI-004",
+    "title": "Root landing and remembered entry",
+    "sections": [
+      36
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Exercise first visit and return with browser history",
+    "evidence": [
+      "docs/WEB.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-UI-005",
+    "title": "Onboarding and replay",
+    "sections": [
+      37
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Test first launch, skip, replay and saved state on supported platforms",
+    "evidence": [
+      "docs/ROADMAP.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-DEV-003",
+    "title": "Screenshot rendering and developer sample mode",
+    "sections": [
+      37
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Capture actual screens using isolated fixtures",
+    "evidence": [
+      "docs/ROADMAP.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-OPS-003",
+    "title": "Production configuration",
+    "sections": [
+      38
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Check production origin, isolation and ordinary settings",
+    "evidence": [
+      "docs/DEPLOYMENT.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-DEV-004",
+    "title": "Developer server switching",
+    "sections": [
+      38
+    ],
+    "applicability": "No required backend or active Fetch connection is configurable in the shipped app.",
+    "priority": "mandatory",
+    "verification": "Review existence of a configurable service at runtime",
+    "evidence": [
+      "docs/FETCH_INTEGRATION.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-DIST-002",
+    "title": "Live landing downloads and PWA installation",
+    "sections": [
+      39
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Verify release fallback and browser installation controls",
+    "evidence": [
+      "docs/WEB.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-REL-001",
+    "title": "Release validation, versioning and transaction evidence",
+    "sections": [
+      40,
+      44,
+      49
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Validate artifact provenance, release notes and publication receipts",
+    "evidence": [
+      "docs/DEPLOYMENT.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-DOC-003",
+    "title": "Compliance governance and traceability",
+    "sections": [
+      41,
+      46,
+      47,
+      48,
+      50
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Validate schema, registry coverage and historical evidence",
+    "evidence": [
+      "docs/UADS_REQUIREMENTS.md"
+    ],
+    "check": "uads-quality.yml",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-QA-002",
+    "title": "Coverage, performance and severity gates",
+    "sections": [
+      42,
+      48
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Measure changed-code coverage and performance",
+    "evidence": [
+      "docs/TESTING.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-SEC-001",
+    "title": "Backend authorization enforcement",
+    "sections": [
+      43
+    ],
+    "applicability": "Harmony has no authenticated backend operations.",
+    "priority": "mandatory",
+    "verification": "Assess whether Harmony runs authenticated backend operations",
+    "evidence": [
+      "docs/ARCHITECTURE.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-OPS-001",
+    "title": "Production health, incidents and recovery",
+    "sections": [
+      45
+    ],
+    "applicability": "Applies to the current Harmony repository or supported targets.",
+    "priority": "mandatory",
+    "verification": "Verify health probes and conduct isolated recovery exercises",
+    "evidence": [
+      "docs/operations/MONITORING.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  },
+  {
+    "id": "UADS-PLAT-003",
+    "title": "Android native package matrix",
+    "sections": [
+      9
+    ],
+    "applicability": "Android support is browser-only and has no native build target.",
+    "priority": "mandatory",
+    "verification": "Check whether Harmony has an Android native target",
+    "evidence": [
+      "docs/ROADMAP.md"
+    ],
+    "check": "manual or recorded CI evidence",
+    "dependencies": [],
+    "exceptionPolicy": "Explicit scoped approval required under UADS \u00a741."
+  }
+]

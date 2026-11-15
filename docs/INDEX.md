@@ -2,6 +2,8 @@
 
 Read in order: [architecture](ARCHITECTURE.md), [feature status and roadmap](ROADMAP.md), [validation report](reports/2026-11-06-validation.md). The original [product specification](PROJECT_SPECIFICATION.md) is intent, not evidence of implementation.
 
+- [UADS requirements](UADS_REQUIREMENTS.md), [active task queue](ACTIVE_TASKS.md) and [quality checks](TESTING.md)
+- [X-Center operations](operations/MONITORING.md)
 - [Development and iOS setup](IOS.md)
 - [Web application](WEB.md) and [interface design](DESIGN.md)
 - [UADS verification, 13 November](reports/2026-11-13-uads.md)
